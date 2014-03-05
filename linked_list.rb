@@ -5,20 +5,20 @@ class LinkedList
   def initialize()
   end
 
-  def add(value)
+  def add(key, value)
     if first_link.nil?
-      self.first_link = Link.new(value)
+      self.first_link = Link.new(key,value)
     else
-      first_link.add(value)
+      first_link.add(key, value)
     end
   end
 
-  def remove(value)
-    first_link.remove(value)
+  def remove(key,value)
+    first_link.remove(key,value)
   end
 
-  def find(value)
-    first_link.find(value).value
+  def find(key, value)
+    first_link.find(key,value).value
   end
 
   def first

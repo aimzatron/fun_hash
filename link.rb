@@ -1,16 +1,17 @@
 class Link
-  attr_accessor :value, :tail, :head
+  attr_accessor :value, :tail, :head, :key
 
-  def initialize(value, head=nil)
+  def initialize(key, value, head=nil)
     @value = value
     @head = head
+    @key = key
   end
 
-  def add(value)
+  def add(key,value)
     if self.last?
       self.tail = Link.new(value, self)
     else
-      self.tail.add(value)
+      self.tail.add(key,value)
     end
   end
 
@@ -21,7 +22,7 @@ class Link
       puts "#{self.value} : #{self.head} : #{self.tail}"
       self.tail.head = self.head unless self.last?
       self.head.tail = self.tail unless self.first?
-    end  
+    end
   end
 
   def find(value)
