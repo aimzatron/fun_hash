@@ -24,6 +24,7 @@ class FunHash
   end
 
   def first
+
   end
 
   private

@@ -18,7 +18,7 @@ require './fun_hash'
       expect(@hash['0']).to eq 'a'      
     end
 
-    it "handles collisions" do
+    xit "handles collisions" do
       @hash['b'] = 'b'
       @hash['c'] = 'c'
 
@@ -26,7 +26,7 @@ require './fun_hash'
       expect(@hash['c']).to eq 'c'
     end
 
-    xit "should allow values to change" do
+    it "should allow values to change" do
       @hash['a'] = 'a'
       @hash['b'] = 'b'
 
