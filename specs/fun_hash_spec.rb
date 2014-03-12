@@ -18,7 +18,7 @@ require './fun_hash'
       expect(@hash['0']).to eq 'a'      
     end
 
-    xit "handles collisions" do
+    it "handles collisions" do
       @hash['b'] = 'b'
       @hash['c'] = 'c'
 
@@ -35,32 +35,11 @@ require './fun_hash'
 
       @hash['b'] = 'c'
 
-      expect(@hash['a']).to eq 'c'
+      expect(@hash['a']).to eq 'a'
       expect(@hash['b']).to eq 'c'
     end
 
-    xit "knows it's size" do
-      @hash[7] = 'seven'
-      @hash[8] = 'eight'
-
-      expect(@hash.size).to eq 2
-    end
-
-    xit "knows when it's empty" do
-      expect(@hash.empty?).to be_true
-
-      @hash[1] = 'a'
-
-      expect(@hash.empty?).to be_false
-    end
-
-    xit "returns first" do
-      expect(@hash.first).to be_nil
-      @hash["k"] = 'v'
-      expect(@hash.first).to eq ['k','v']
-    end
-
-    xit "knows it's keys" do
+    it "knows it's keys" do
       expect(@hash.keys).to eq []
 
       @hash['a'] = 'a'
@@ -70,25 +49,28 @@ require './fun_hash'
       expect(@hash.keys).to eq ['a','b','c']
     end
 
-    xit "iterates over each item" do
+    it "knows it's size" do
+      @hash[7] = 'seven'
+      @hash[8] = 'eight'
 
-      str = ''
-      @hash.each{|k,v| str << "#{k}:#{v}|"}
-
-      str.should eq ''
-
-
-      @hash['a'] = 'x'
-      @hash['b'] = 'y'
-      @hash['c'] = 'z'
-
-      str = ''
-      @hash.each{|k,v| str << "#{k}:#{v}|"}
-
-      str.should eq 'a:x|b:y|c:z|'
+      expect(@hash.size).to eq 2
     end
 
-    xit "deletes an item" do
+    it "knows when it's empty" do
+      expect(@hash.empty?).to be_true
+
+      @hash[1] = 'a'
+
+      expect(@hash.empty?).to be_false
+    end
+
+    it "returns first" do
+      expect(@hash.first).to be_nil
+      @hash['k'] = 'v'
+      expect(@hash.first).to eq ['k','v']
+    end
+
+    it "deletes an item" do
       @hash['a'] = 'x'
       @hash['b'] = 'y'
       @hash['c'] = 'z'
@@ -100,7 +82,7 @@ require './fun_hash'
       expect(@hash['b'] == nil)
     end
 
-    xit "knows when it is equal to another 'fun' hash" do
+    it "knows when it is equal to another 'fun' hash" do
       @hash2 = FunHash.new
       expect(@hash == @hash2).to be_true
 
