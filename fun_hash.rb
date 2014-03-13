@@ -78,6 +78,11 @@ class FunHash
   end
 
   def each(&block)
+    @buckets.each do |ll|
+      ll.each do |key, value|
+        yield value, key
+      end
+    end
   end
 
   def ==(hash)

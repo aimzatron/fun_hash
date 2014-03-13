@@ -70,6 +70,25 @@ require './fun_hash'
       expect(@hash.first).to eq ['k','v']
     end
 
+    it "iterates over each item" do
+
+      str = ''
+      @hash.each{|k,v| str << "#{k}:#{v}|"}
+
+      str.should eq ''
+
+
+      @hash['a'] = 'x'
+      @hash['b'] = 'y'
+      @hash['c'] = 'z'
+
+      str = ''
+      @hash.each{|k,v| str << "#{k}:#{v}|"}
+
+      str.should eq 'b:y|c:z|a:x|'
+    end
+
+
     it "deletes an item" do
       @hash['a'] = 'x'
       @hash['b'] = 'y'
